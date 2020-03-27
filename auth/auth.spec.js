@@ -19,11 +19,12 @@ describe("AuthenticationROuter", function() {
     });
   });
   describe("login post", function() {
-    it("should return json for login", function() {
+    it("should return json for login and status 200", function() {
       return request(server)
         .post("/api/auth/login")
         .send({ username: "marco123", password: "marco123" })
         .then(res => {
+          expect(res.status).toBe(200);
           expect(res.type).toMatch(/json/);
         });
     });
